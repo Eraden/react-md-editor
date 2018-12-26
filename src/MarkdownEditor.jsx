@@ -11,7 +11,7 @@ import 'codemirror/addon/edit/continuelist';
 
 import { getCursorState, applyFormat } from './format.js';
 
-class MarkdownEditor extends React.Component {
+export class MarkdownEditor extends React.Component {
     static propTypes() {
         return {
             onChange: PropTypes.func,
