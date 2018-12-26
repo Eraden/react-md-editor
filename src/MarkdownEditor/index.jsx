@@ -22,10 +22,11 @@ const toggleFormat = (codeMirror, formatKey, event) => {
 export class MarkdownEditor extends React.Component {
     static propTypes() {
         return {
-            onChange: PropTypes.func,
-            options:  PropTypes.object,
-            path:     PropTypes.string,
-            value:    PropTypes.string,
+            onChange:  PropTypes.func,
+            options:   PropTypes.object,
+            path:      PropTypes.string,
+            value:     PropTypes.string,
+            className: PropTypes.string,
         };
     }
 
@@ -88,9 +89,9 @@ export class MarkdownEditor extends React.Component {
     bindElement = codeMirrorElement => this.codeMirrorElement = codeMirrorElement;
 
     render() {
-        const { path, value } = this.props;
+        const { path, value, className } = this.props;
         return (
-            <div className={styles.MDEditor}>
+            <div className={classNames(styles.MDEditor, className)}>
                 <div className={styles.toolbar}>
                     <Button
                         formatKey={'h1'}

@@ -48,6 +48,7 @@ React.render(<App />, document.getElementById('app'));
 ### Properties
 
 * `value` `String` the markdown
+* `className` `String` element class name
 * `options` `Object (newValue)` options passed to the CodeMirror instance
 * `onChange` `Function (newValue)` called when a change is made
 
