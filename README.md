@@ -12,11 +12,16 @@ The easiest way to use codemirror is to install it from NPM and include it in yo
 You can also use the standalone build by including `dist/codemirror.js` in your page. If you use this, make sure you have already included React, and it is available as a global variable.
 
 ```
-yarn add https://github.com/Eraden/react-md-editor.git\#master
+yarn add codemirror https://github.com/Eraden/react-md-editor.git\#master
 ```
 
 
 ## Usage
+
+```css
+@import "~react-md-editor/lib/MarkdownEditor.css";
+@import "~codemirror/lib/codemirror.css";
+```
 
 ```js
 import React              from "react";
