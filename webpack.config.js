@@ -5,7 +5,6 @@ const fs = require("fs");
 const dotenv = require("dotenv");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
 const WebpackClearConsole = require("webpack-clear-console").WebpackClearConsole;
 
 if (!process.env.NODE_ENV)
@@ -31,9 +30,6 @@ const plugins = [
     new HtmlWebpackPlugin({
         title: "Web RPG"
     }),
-    new ServiceWorkerWebpackPlugin({
-        entry: resolve(__dirname, "src", "sw.js"),
-    }),
 ];
 
 if (process.env.NODE_ENV !== "development") {
@@ -42,13 +38,13 @@ if (process.env.NODE_ENV !== "development") {
 
 module.exports = {
     entry:     {
-        "app": "./src/app.jsx",
+        "md-editor": "./src/MarkdownEditor.jsx",
     },
     devtool:   "source-map",
     output:    {
         publicPath: "/",
-        path:       resolve(__dirname, "..", "dist"),
-        filename:   "[name].[hash].js",
+        path:       resolve(__dirname, "dist"),
+        filename:   "[name].js",
         // hashFunction: require('metrohash').MetroHash64
     },
     mode:      process.env.NODE_ENV,
