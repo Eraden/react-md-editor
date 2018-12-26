@@ -1,8 +1,10 @@
-var classNames = require('classnames');
-var CM = require('codemirror');
-var React = require('react');
-var ReactDOM = require('react-dom');
 var Icons = require('./icons');
+
+import ReactDOM from "react-dom";
+import React from "react";
+import CM from "codemirror";
+import classNames from "classnames";
+import PropTypes from "prop-types";
 
 require('codemirror/mode/xml/xml');
 require('codemirror/mode/markdown/markdown');
@@ -13,10 +15,10 @@ import { getCursorState, applyFormat } from './format.js';
 var MarkdownEditor = React.createClass({
 
 	propTypes: {
-		onChange: React.PropTypes.func,
-		options: React.PropTypes.object,
-		path: React.PropTypes.string,
-		value: React.PropTypes.string,
+		onChange: PropTypes.func,
+		options: PropTypes.object,
+		path: PropTypes.string,
+		value: PropTypes.string,
 	},
 
 	getInitialState () {
