@@ -8,6 +8,8 @@ import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/addon/edit/continuelist';
 
+import "./MarkdownEditor.css";
+
 import Button from "./Button";
 
 import { getCursorState, applyFormat } from './format.js';
