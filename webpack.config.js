@@ -1,10 +1,6 @@
-const webpack = require("webpack");
 const { resolve } = require("path");
 
-const fs = require("fs");
-const dotenv = require("dotenv");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WebpackClearConsole = require("webpack-clear-console").WebpackClearConsole;
 
 if (!process.env.NODE_ENV)
     process.env.NODE_ENV = "development";
@@ -12,30 +8,18 @@ if (!process.env.NODE_ENV)
 const debug = process.env.NODE_ENV === "development";
 
 const plugins = [
-    new webpack.DefinePlugin({
-        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-    }),
-    new webpack.EnvironmentPlugin(["NODE_ENV"]),
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css", chunkFilename: "[id].css" }),
 ];
 
-if (process.env.NODE_ENV !== "development") {
-    plugins.push(new WebpackClearConsole());
-}
-
 module.exports = {
-    entry:     {
-        "md-editor": "./src/MarkdownEditor.jsx",
-    },
-    devtool:   "source-map",
-    output:    {
-        publicPath: "/",
+    entry:   "./src/MarkdownEditor.jsx",
+    devtool: "source-map",
+    output:  {
         path:       resolve(__dirname, "lib"),
-        filename:   "[name].js",
-        // hashFunction: require('metrohash').MetroHash64
+        filename:   "MarkdownEditor.js",
     },
-    mode:      process.env.NODE_ENV,
-    module:    {
+    mode:    "development",
+    module:  {
         rules: [
             {
                 test:    /\.css$/,
@@ -95,7 +79,7 @@ module.exports = {
             }
         ],
     },
-    resolve:   {
+    resolve: {
         extensions: [
             ".wasm",
             ".mjs",
@@ -109,27 +93,7 @@ module.exports = {
             ".jpeg",
             ".gif",
             ".svg",
-        ],
-        alias:      {
-            actions:      resolve(__dirname, "src", "actions"),
-            components:   resolve(__dirname, "src", "components"),
-            images:       resolve(__dirname, "src", "images"),
-            reducers:     resolve(__dirname, "src", "reducers"),
-            sagas:        resolve(__dirname, "src", "sagas"),
-            sources:      resolve(__dirname, "src", "sources"),
-            translations: resolve(__dirname, "src", "translations"),
-            spec:         resolve(__dirname, "spec"),
-        },
+        ]
     },
-    plugins,
-    devServer: {
-        port:               9000,
-        index:              "index.html",
-        inline:             true,
-        contentBase:        "/",
-        historyApiFallback: true,
-        proxy:              {
-            "/api": "http://127.0.0.1:3678",
-        },
-    },
+    plugins
 };
