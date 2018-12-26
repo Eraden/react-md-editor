@@ -18,16 +18,18 @@
     "codemirror": "^5.18.2"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
     "happiness": "^7.1.2",
     "marked": "^0.3.6",
-    "react": "^15.0",
-    "react-component-gulp-tasks": "^0.7.7",
-    "react-dom": "^15.0"
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1"
   },
   "browserify-shim": {
     "react": "global:React"
