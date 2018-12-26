@@ -3,40 +3,14 @@ import React          from "react";
 import CM             from "codemirror";
 import classNames     from "classnames";
 import * as PropTypes from "prop-types";
-import * as Icons     from './icons';
 
 import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/addon/edit/continuelist';
 
+import Button from "./Button";
+
 import { getCursorState, applyFormat } from './format.js';
-
-const Icon = ({ icon }) =>
-    <span dangerouslySetInnerHTML={{ __html: icon }} className="MDEditor_toolbarButton_icon"/>;
-
-const Button = ({ formatKey, label, action }) => {
-    const isTextIcon = (formatKey === 'h1' || formatKey === 'h2' || formatKey === 'h3');
-    const className = classNames('MDEditor_toolbarButton', {
-        'MDEditor_toolbarButton--pressed': this.state.cs[formatKey]
-    }, ('MDEditor_toolbarButton--' + formatKey));
-
-    const labelClass = isTextIcon ? 'MDEditor_toolbarButton_label-icon' : 'MDEditor_toolbarButton_label';
-
-    return (
-        <button
-            className={className}
-            onClick={action}
-            title={formatKey}
-        >
-            {
-                isTextIcon ? null : <Icon icon={Icons[formatKey]}/>
-            }
-            <span className={labelClass}>
-                {label}
-            </span>
-        </button>
-    );
-};
 
 const toggleFormat = (codeMirror, formatKey, event) => {
     event.preventDefault();
@@ -61,15 +35,14 @@ export class MarkdownEditor extends React.Component {
             tabSize:        '2',
             ...this.props.options,
         });
-        this.codeMirror.on('change', this.codemirrorValueChanged);
+        this.codeMirror.on('change', this.codeMirrorValueChanged);
         this.codeMirror.on('focus', this.setFocusOn);
         this.codeMirror.on('blur', this.setFocusOff);
         this.codeMirror.on('cursorActivity', this.updateCursorState);
-        this.currentCodeMirrorValue = this.props.value;
+        this.currentCodeMirrorValue = this.props.value || "";
     }
 
     componentWillUnmount() {
-        // todo: is there a lighter-weight way to remove the cm instance?
         if (this.codeMirror) {
             this.codeMirror.toTextArea();
         }
@@ -81,25 +54,16 @@ export class MarkdownEditor extends React.Component {
         }
     }
 
-    focus() {
-        if (this.codeMirror) {
-            this.codeMirror.focus();
-        }
-    }
+    focus = () => this.codeMirror ? this.codeMirror.focus() : null;
 
-    setFocusOn = () => {
-        this.setState({ isFocused: true });
-    };
+    setFocusOn = () => this.setState({ isFocused: true });
 
-    setFocusOff = () => {
-        this.setState({ isFocused: false });
-    };
 
-    updateCursorState() {
-        this.setState({ cs: getCursorState(this.codeMirror) });
-    }
+    setFocusOff = () => this.setState({ isFocused: false });
 
-    codemirrorValueChanged = (doc) => {
+    updateCursorState = () => this.setState({ cs: getCursorState(this.codeMirror) });
+
+    codeMirrorValueChanged = (doc) => {
         const newValue = doc.getValue();
         this.currentCodeMirrorValue = newValue;
         this.props.onChange && this.props.onChange(newValue);
@@ -126,43 +90,50 @@ export class MarkdownEditor extends React.Component {
                         formatKey={'h1'}
                         label={'h1'}
                         action={this.toggleH1}
+                        pressed={this.state.cs.h1}
                     />
                     <Button
                         formatKey={'h2'}
                         label={'h2'}
                         action={this.toggleH2}
+                        pressed={this.state.cs.h2}
                     />
                     <Button
                         formatKey={'h3'}
                         label={'h3'}
                         action={this.toggleH3}
+                        pressed={this.state.cs.h3}
                     />
                     <Button
                         formatKey={'bold'}
                         label={'b'}
                         action={this.toggleBold}
+                        pressed={this.state.cs.bold}
                     />
                     <Button
                         formatKey={'italic'}
                         label={'i'}
                         action={this.toggleItalic}
+                        pressed={this.state.cs.italic}
                     />
                     <Button
                         formatKey={'oList'}
                         label={'ol'}
                         action={this.toggleOList}
+                        pressed={this.state.cs.oList}
                     />
                     <Button
                         formatKey={'uList'}
                         label={'ul'}
                         action={this.toggleUList}
+                        pressed={this.state.cs.uList}
                     />
                     <Button
                         formatKey={'quote'}
                         label={'q'}
                         action={this.toggleQuote}
+                        pressed={this.state.cs.quote}
                     />
-                    {/*this.renderButton('link', 'a')*/}
                 </div>
                 <div className={editorClassName}>
                     <textarea
