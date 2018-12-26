@@ -15,8 +15,11 @@ module.exports = {
     entry:   "./src/MarkdownEditor.jsx",
     devtool: "source-map",
     output:  {
-        path:       resolve(__dirname, "lib"),
-        filename:   "MarkdownEditor.js",
+        path:           resolve(__dirname, "lib"),
+        filename:       "MarkdownEditor.js",
+        library:        "MarkdownEditor",
+        libraryTarget:  'umd',
+        umdNamedDefine: true
     },
     mode:    "development",
     module:  {
