@@ -2,16 +2,13 @@
   "name": "react-md-editor",
   "version": "0.2.2",
   "description": "React Markdown Editor",
-  "main": "lib/MDEditor.js",
+  "main": "src/MDEditor.js",
   "author": "Jed Watson",
   "homepage": "https://github.com/JedWatson/react-md-editor",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/JedWatson/react-md-editor.git"
-  },
-  "bugs": {
-    "url": "https://github.com/JedWatson/react-md-editor/issues"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -24,32 +21,11 @@
     "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
-    "happiness": "^7.1.2",
     "marked": "^0.3.6",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1"
-  },
-  "browserify-shim": {
-    "react": "global:React"
-  },
-  "scripts": {
-    "build": "gulp clean && NODE_ENV=production gulp build",
-    "examples": "gulp dev:server",
-    "publish:site": "gulp publish:examples",
-    "release": "gulp release",
-    "start": "gulp dev",
-    "test": "echo \"no tests yet\" && exit 0",
-    "lint": "happiness",
-    "watch": "gulp watch:lib"
-  },
-  "happiness": {
-    "ignore": [
-      "**/.publish/**",
-      "**/dist/**",
-      "**/lib/**"
-    ]
   },
   "keywords": [
     "react",
