@@ -12,6 +12,7 @@
       {
         "proposal": "minimal"
       }
-    ]
+    ],
+    "babel-plugin-add-module-exports"
   ]
 }
