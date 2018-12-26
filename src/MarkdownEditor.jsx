@@ -27,6 +27,11 @@ export class MarkdownEditor extends React.Component {
         };
     }
 
+    state = {
+        focused: false,
+        cs: {},
+    };
+
     componentDidMount() {
         this.codeMirror = CM.fromTextArea(ReactDOM.findDOMNode(this.codeMirrorElement), {
             mode:           'markdown',
