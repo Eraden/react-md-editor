@@ -16,8 +16,8 @@ module.exports = {
     devtool: "source-map",
     output:  {
         path:           resolve(__dirname, "lib"),
-        filename:       "Index.js",
-        library:        "Index",
+        filename:       "MarkdownEditor.js",
+        library:        "MarkdownEditor",
         libraryTarget:  'umd',
         umdNamedDefine: true
     },
