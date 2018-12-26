@@ -2,7 +2,7 @@
   "name": "react-md-editor",
   "version": "0.2.2",
   "description": "React Markdown Editor",
-  "main": "lib/md-editor.js",
+  "main": "lib/MarkdownEditor.js",
   "author": "Jed Watson",
   "homepage": "https://github.com/JedWatson/react-md-editor",
   "license": "MIT",
