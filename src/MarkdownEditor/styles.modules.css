@@ -1,0 +1,19 @@
+.MDEditor {
+    display: block;
+}
+
+.toolbar {
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+.editor {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.focused {
+    display: block;
+}

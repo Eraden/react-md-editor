@@ -2,16 +2,18 @@ import React      from "react";
 import classNames from "classnames";
 
 import * as Icons from "./icons";
-import Icon       from "./Icon";
+import Icon       from "../Icon";
+
+import * as styles from "./styles.modules.css";
 
 const Button = ({ formatKey, label, action, pressed }) => {
     const isTextIcon = (formatKey === 'h1' || formatKey === 'h2' || formatKey === 'h3');
     return (
         <button
             className={classNames(
-                'MDEditor_toolbarButton',
+                styles.toolbarButton,
                 `MDEditor_toolbarButton--${formatKey}`,
-                pressed ? 'MDEditor_toolbarButton--pressed' : null,
+                pressed ? styles.pressed : null,
             )}
             onClick={action}
             title={formatKey}
@@ -20,7 +22,9 @@ const Button = ({ formatKey, label, action, pressed }) => {
                 isTextIcon ? null : <Icon icon={Icons[formatKey]}/>
             }
             <span className={classNames(
-                isTextIcon ? 'MDEditor_toolbarButton_label-icon' : 'MDEditor_toolbarButton_label'
+                isTextIcon
+                    ? styles.labelIcon
+                    : styles.label
             )}>
                 {label}
             </span>

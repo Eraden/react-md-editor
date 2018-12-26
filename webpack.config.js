@@ -8,16 +8,16 @@ if (!process.env.NODE_ENV)
 const debug = process.env.NODE_ENV === "development";
 
 const plugins = [
-    new MiniCssExtractPlugin({ filename: "MarkdownEditor.css" }),
+    new MiniCssExtractPlugin({ filename: "Index.css" }),
 ];
 
 module.exports = {
-    entry:   "./src/MarkdownEditor.jsx",
+    entry:   "./src/MarkdownEditor/index.jsx",
     devtool: "source-map",
     output:  {
         path:           resolve(__dirname, "lib"),
-        filename:       "MarkdownEditor.js",
-        library:        "MarkdownEditor",
+        filename:       "Index.js",
+        library:        "Index",
         libraryTarget:  'umd',
         umdNamedDefine: true
     },

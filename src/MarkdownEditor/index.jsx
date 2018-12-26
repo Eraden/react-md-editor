@@ -8,11 +8,11 @@ import 'codemirror/mode/xml/xml';
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/addon/edit/continuelist';
 
-import "./MarkdownEditor.css";
+import * as styles from "./styles.modules.css";
 
-import Button from "./Button";
+import Button from "../Button";
 
-import { getCursorState, applyFormat } from './format.js';
+import { getCursorState, applyFormat } from '../format.js';
 
 const toggleFormat = (codeMirror, formatKey, event) => {
     event.preventDefault();
@@ -31,7 +31,7 @@ export class MarkdownEditor extends React.Component {
 
     state = {
         focused: false,
-        cs: {},
+        cs:      {},
     };
 
     componentDidMount() {
@@ -88,11 +88,10 @@ export class MarkdownEditor extends React.Component {
     bindElement = codeMirrorElement => this.codeMirrorElement = codeMirrorElement;
 
     render() {
-        const editorClassName = classNames('MDEditor_editor', { 'MDEditor_editor--focused': this.state.isFocused });
         const { path, value } = this.props;
         return (
-            <div className="MDEditor">
-                <div className="MDEditor_toolbar">
+            <div className={styles.MDEditor}>
+                <div className={styles.toolbar}>
                     <Button
                         formatKey={'h1'}
                         label={'h1'}
@@ -142,7 +141,10 @@ export class MarkdownEditor extends React.Component {
                         pressed={this.state.cs.quote}
                     />
                 </div>
-                <div className={editorClassName}>
+                <div className={classNames(
+                    styles.editor,
+                    { [styles.focused]: this.state.isFocused }
+                )}>
                     <textarea
                         ref={this.bindElement}
                         name={path}
