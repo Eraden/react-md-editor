@@ -2,7 +2,7 @@
   "name": "react-md-editor",
   "version": "0.2.2",
   "description": "React Markdown Editor",
-  "main": "src/MDEditor.js",
+  "main": "src/MarkdownEditor.js",
   "author": "Jed Watson",
   "homepage": "https://github.com/JedWatson/react-md-editor",
   "license": "MIT",
@@ -11,8 +11,28 @@
     "url": "https://github.com/JedWatson/react-md-editor.git"
   },
   "dependencies": {
+    "@babel/core": "7",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-cli": "6",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-loader": "7",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
     "classnames": "^2.2.5",
-    "codemirror": "^5.18.2"
+    "codemirror": "^5.18.2",
+    "dotenv": "^6.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.6.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "prop-types": "^15.6.2",
+    "serviceworker-webpack-plugin": "^1.0.1",
+    "webpack": "^4.28.2",
+    "webpack-clear-console": "^1.0.3",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14"
   },
   "peerDependencies": {
     "react": "^16.6.3",
