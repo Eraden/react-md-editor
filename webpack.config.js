@@ -8,7 +8,7 @@ if (!process.env.NODE_ENV)
 const debug = process.env.NODE_ENV === "development";
 
 const plugins = [
-    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css", chunkFilename: "[id].css" }),
+    new MiniCssExtractPlugin({ filename: "MarkdownEditor.css" }),
 ];
 
 module.exports = {
