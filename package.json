@@ -57,5 +57,9 @@
     "wysiwyg",
     "md",
     "markdown"
-  ]
+  ],
+  "scripts": {
+    "build": "NODE_ENV=development WEBPACK_ENV=build webpack --mode=development",
+    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch"
+  }
 }

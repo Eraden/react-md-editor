@@ -3,7 +3,6 @@ const { resolve } = require("path");
 
 const fs = require("fs");
 const dotenv = require("dotenv");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const WebpackClearConsole = require("webpack-clear-console").WebpackClearConsole;
 
@@ -12,24 +11,12 @@ if (!process.env.NODE_ENV)
 
 const debug = process.env.NODE_ENV === "development";
 
-["../.env", `../.env.${process.env.NODE_ENV}`, "./.env", `./.env.${process.env.NODE_ENV}`].forEach((path) => {
-    if (fs.existsSync(path)) {
-        const envConfig = dotenv.parse(fs.readFileSync(path));
-        for (const k in envConfig) process.env[k] = envConfig[k];
-    }
-});
-
 const plugins = [
     new webpack.DefinePlugin({
-        "process.env.NODE_ENV":     JSON.stringify(process.env.NODE_ENV),
-        "process.env.DEBUG":        JSON.stringify(process.env.DEBUG),
-        "process.env.BACKEND_HOST": JSON.stringify(process.env.BACKEND_HOST),
+        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
     }),
-    new webpack.EnvironmentPlugin(["NODE_ENV", "DEBUG", "BACKEND_HOST"]),
+    new webpack.EnvironmentPlugin(["NODE_ENV"]),
     new MiniCssExtractPlugin({ filename: "[name].[contenthash].css", chunkFilename: "[id].css" }),
-    new HtmlWebpackPlugin({
-        title: "Web RPG"
-    }),
 ];
 
 if (process.env.NODE_ENV !== "development") {
@@ -43,7 +30,7 @@ module.exports = {
     devtool:   "source-map",
     output:    {
         publicPath: "/",
-        path:       resolve(__dirname, "dist"),
+        path:       resolve(__dirname, "lib"),
         filename:   "[name].js",
         // hashFunction: require('metrohash').MetroHash64
     },
